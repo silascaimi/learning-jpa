@@ -63,36 +63,36 @@
 		<h:dataTable value="#{listPedidosBean.pedidos}" var="p"
 			styleClass="table" headerClass="header"
 			rendered="#{listPedidosBean.pedidos.size() > 0}"
-			columnClasses="column sizeSmall alignCenter, column sizeLarge alignLeft, colum sizeLarge alignLeft, column sizeSmall, column sizeLarge alignLeft, column alignCenter">
+			columnClasses="column sizeSmall alignCenter,column sizeLarge alignLeft,column sizeLarge alignLeft,column sizeSmall alignCenter,column sizeLarge alignLeft, column sizeLarge alignCenter,column sizeSmall alignCenter">
 
-			<f:facet name=header>Lista de Pedidos</f:facet>
+			<f:facet name="header">Lista de Pedidos</f:facet>
 			
 			<h:column>
-				<f:facet value="header">Data</f:facet>
+				<f:facet name="header">Data</f:facet>
 				<h:outputText value="#{p.data}">
-					<f:coonvertDateTime pattern="dd/MM/yyyy" />
+					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</h:outputText>
 			</h:column>
 			
 			<h:column>
-				<f:facet value="header">Cliente</f:facet>
+				<f:facet name="header">Cliente</f:facet>
 				<h:outputText value="#{p.cliente.nome}" />
 			</h:column>
 			
 			<h:column>
-				<f:facet value="header">Email</f:facet>
+				<f:facet name="header">Email</f:facet>
 				<h:outputText value="#{p.cliente.email}" />
 			</h:column>
 			
 			<h:column>
-				<f:facet value="header">Valor</f:facet>
+				<f:facet name="header">Valor</f:facet>
 				<h:outputText value="#{p.valorTotal}">
 					<f:convertNumber type="currency" locale="pt_BR" />
 				</h:outputText>
 			</h:column>
 			
 			<h:column>
-				<f:facet value="header">Produtos</f:facet>
+				<f:facet name="header">Produtos</f:facet>
 				<ui:repeat var="pr" value="#{p.produtos}">
 					<h:outputText value="#{pr.nome} - #{formatterBean.formatarMoeda(pr.valor)}" />				
 				</ui:repeat>
@@ -101,23 +101,21 @@
 			<h:column>
 				<f:facet name="header">Pagar</f:facet>
 				<h:panelGroup rendered="#{p.pagamento == null}">
-					<h:commandLink value="Boleto" action="#{listPedidoBean.pagar(p.id, 'BOLETO')}" />
+					<h:commandLink value="Boleto" action="#{listPedidosBean.pagar(p.id, 'BOLETO')}" />
 					
-					<h:commandLink value="Cartão Crédito" action="#{listPedidoBean.pagar(p.id, 'CARTAO_CREDITO')}" />
+					<h:commandLink value="Cartão Crédito" action="#{listPedidosBean.pagar(p.id, 'CARTAO_CREDITO')}" />
 				</h:panelGroup>
-				<h:outputText value="#{p.pagamento.tipoPagto}" rendered="#{p.pagamento != null}" />
+				<h:outputText value="#{p.pagamento.tipoPagamento}" rendered="#{p.pagamento != null}" />
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">Excluir</f:facet>
-				<h:commandLink value="Excluir" action="#{listPedidoBean.excluir(p.id)}" />
+				<h:commandLink value="Excluir" action="#{listPedidosBean.excluir(p.id)}" />
 			</h:column>
 
 		</h:dataTable>
 
 	</h:form>
-
-
 
 </body>
 </html>
