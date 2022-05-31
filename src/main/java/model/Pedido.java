@@ -1,27 +1,56 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Pedido {
-	
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Pedido implements Serializable {
+
+	@Id
+	@GeneratedValue
 	private Integer id;
-	
+
+	@Column(name = "valor_total")
 	private Double valorTotal;
-	
+
+	// @Temporal(TemporalType.TIME) Hora
+	// @Temporal(TemporalType.TIMESTAMP) Data e hora
+	@Temporal(TemporalType.DATE) // Data
+	@Column(nullable = false)
 	private Date data;
-	
+
+	@OneToOne
+	@JoinColumn(name = "pagamento_id") // coluna na tabela pedido que será FK
 	private Pagamento pagamento;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
-	
+
+	@ManyToMany
+	@JoinTable(name = "pedido_produto",
+		joinColumns = @JoinColumn(name = "pedido_id"),
+		inverseJoinColumns = @JoinColumn(name = "produto_id"))
 	private List<Produto> produtos = new ArrayList<Produto>();
-	
+
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -70,7 +99,5 @@ public class Pedido {
 	public String toString() {
 		return "Pedido [id=" + id + ", valorTotal=" + valorTotal + ", data=" + data + "]";
 	}
-	
-	
-	
+
 }
