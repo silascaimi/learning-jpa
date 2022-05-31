@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -41,7 +42,7 @@ public class Pedido implements Serializable {
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER) // Carrega os dados da tabela previamente
 	@JoinTable(name = "pedido_produto",
 		joinColumns = @JoinColumn(name = "pedido_id"),
 		inverseJoinColumns = @JoinColumn(name = "produto_id"))
