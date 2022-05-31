@@ -1,5 +1,6 @@
 package ejb;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -7,7 +8,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import model.Cliente;
+import model.Pagamento;
+import model.Pagamento.TipoPagamento;
 import model.Pedido;
+import model.Produto;
 
 /**
  * Session Bean implementation class PedidoBean
@@ -24,15 +29,38 @@ public class PedidoBean {
 	}
 	
 	public void pagar(Integer pedidoId, String tipo) {
+		TipoPagamento tipoPagamento = TipoPagamento.valueOf(tipo);
+		Pedido pedido = em.find(Pedido.class, pedidoId);
 		
+		Pagamento pagamento = new Pagamento();
+		pagamento.setTipoPagamento(tipoPagamento);
+		em.persist(pagamento);
+		
+		pedido.setPagamento(pagamento);
 	}
 	
-	public void excluir(Integer peidoId) {
-		
+	public void excluir(Integer pedidoId) {
+		Pedido pedido = em.find(Pedido.class, pedidoId);
+		em.remove(pedido);
 	}
 	
 	public void cadastrar(Integer clienteId, Integer[] produtosIds) throws Exception {
+		Cliente cliente = em.find(Cliente.class, clienteId);
 		
+		Pedido pedido = new Pedido();
+		pedido.setData(new Date());
+		pedido.setCliente(cliente);
+		em.persist(pedido);
+		
+		double valorTotal = 0;
+		for (Integer produtoId : produtosIds) {
+			Produto produto = em.find(Produto.class, produtoId);
+			pedido.getProdutos().add(produto);
+			
+			valorTotal += produto.getValor();
+		}
+		
+		pedido.setValorTotal(valorTotal);
 	}
 
 }
