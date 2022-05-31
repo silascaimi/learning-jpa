@@ -1,15 +1,28 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Cliente {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
+public class Cliente implements Serializable {
+
+	@Id
+	@GeneratedValue
 	private Integer id;
 
+	@Column(length = 100, nullable = false)
 	private String nome;
 
+	@Column(length = 50, nullable = false)
 	private String email;
 
+	@OneToMany(mappedBy = "cliente") // A configurção estará em cliente da classe Pedido
 	private List<Pedido> pedidos;
 
 	public Integer getId() {
