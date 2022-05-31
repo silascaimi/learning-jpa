@@ -22,9 +22,9 @@
 		<br />
 
 		<h3>Escolha os produtos:</h3>
-		<h:selectManyCheckbox value="#{editPedidoBean}" layout="pageDirection">
+		<h:selectManyCheckbox value="#{editPedidoBean.selectedProdutosIds}" layout="pageDirection">
 			<f:selectItems value="#{editPedidoBean.produtos}" var="p"
-				itemValue="#{p.id}"	itemLabel="#{p.nome} - #{formatterBean.formatarMoeada(p.valor)}" />
+				itemValue="#{p.id}"	itemLabel="#{p.nome} - #{formatterBean.formatarMoeda(p.valor)}" />
 		</h:selectManyCheckbox>
 
 		<br />

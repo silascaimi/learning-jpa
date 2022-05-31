@@ -52,11 +52,19 @@ public class EditPedidoBean implements Serializable {
 		return produtos;
 	}
 
-	public Integer getSelectedClenteId() {
+	public Integer getSelectedClienteId() {
 		return selectedClienteId;
 	}
+	
+	public void setSelectedClienteId(Integer selectedClienteId) {
+		this.selectedClienteId = selectedClienteId;
+	}
 
-	public Integer[] getSelectedProdudosId() {
+	public Integer[] getSelectedProdutosIds() {
 		return selectedProdutosIds;
+	}
+	
+	public void setSelectedProdutosIds(Integer[] selectedProdutosIds) {
+		this.selectedProdutosIds = selectedProdutosIds;
 	}
 }

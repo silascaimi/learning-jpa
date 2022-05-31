@@ -63,7 +63,7 @@
 		<h:dataTable value="#{listPedidosBean.pedidos}" var="p"
 			styleClass="table" headerClass="header"
 			rendered="#{listPedidosBean.pedidos.size() > 0}"
-			columnClasses="column sizeSmall alignCenter, column sizeLarge alignLeft, column sizeLarge alignLeft, column sizeSmall, column sizeLarge alignLeft, column alignCenter">
+			columnClasses="column sizeSmall alignCenter, column sizeLarge alignLeft, column sizeLarge alignLeft, column sizeSmall, column sizeLarge alignLeft, column alignCenter, column alignCenter">
 
 			<f:facet name="header">Lista de Pedidos</f:facet>
 			
@@ -101,16 +101,16 @@
 			<h:column>
 				<f:facet name="header">Pagar</f:facet>
 				<h:panelGroup rendered="#{p.pagamento == null}">
-					<h:commandLink value="Boleto" action="#{listPedidoBean.pagar(p.id, 'BOLETO')}" />
+					<h:commandLink value="Boleto" action="#{listPedidosBean.pagar(p.id, 'BOLETO')}" />
 					
-					<h:commandLink value="Cartão Crédito" action="#{listPedidoBean.pagar(p.id, 'CARTAO_CREDITO')}" />
+					<h:commandLink value="Cartão Crédito" action="#{listPedidosBean.pagar(p.id, 'CARTAO_CREDITO')}" />
 				</h:panelGroup>
-				<h:outputText value="#{p.pagamento.tipoPagto}" rendered="#{p.pagamento != null}" />
+				<h:outputText value="#{p.pagamento.tipoPagamento}" rendered="#{p.pagamento != null}" />
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">Excluir</f:facet>
-				<h:commandLink value="Excluir" action="#{listPedidoBean.excluir(p.id)}" />
+				<h:commandLink value="Excluir" action="#{listPedidosBean.excluir(p.id)}" />
 			</h:column>
 
 		</h:dataTable>
