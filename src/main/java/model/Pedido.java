@@ -38,15 +38,21 @@ public class Pedido implements Serializable {
 	@JoinColumn(name = "pagamento_id") // coluna na tabela pedido que será FK
 	private Pagamento pagamento;
 
+	// Lado Many é o dono do relacionamento, possui a FK e acompanha @joincolumn
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
+	// Chave estrangeira fica na tabela de associação
+	// O dono do relacionamento e configuração fica a critério
 	@ManyToMany(fetch = FetchType.EAGER) // Carrega os dados da tabela previamente
 	@JoinTable(name = "pedido_produto",
 		joinColumns = @JoinColumn(name = "pedido_id"),
 		inverseJoinColumns = @JoinColumn(name = "produto_id"))
 	private List<Produto> produtos = new ArrayList<Produto>();
+	
+	// @OneToOne e @ManyToOne usam EAGER
+	// @OneToMany e @ManyToMany usam LAZY
 
 	public Integer getId() {
 		return id;

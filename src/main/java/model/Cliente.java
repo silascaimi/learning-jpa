@@ -22,6 +22,7 @@ public class Cliente implements Serializable {
 	@Column(length = 50, nullable = false)
 	private String email;
 
+	// Lado One indica quem possui a configuração
 	@OneToMany(mappedBy = "cliente") // A configurção estará em cliente da classe Pedido
 	private List<Pedido> pedidos;
 
