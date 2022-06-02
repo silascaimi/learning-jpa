@@ -1,4 +1,4 @@
-package bean;
+package relacionamentos.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,11 +8,11 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import ejb.ClienteBean;
-import ejb.PedidoBean;
-import ejb.ProdutoBean;
-import model.Cliente;
-import model.Produto;
+import relacionamentos.ejb.ClienteBean;
+import relacionamentos.ejb.PedidoBean;
+import relacionamentos.ejb.ProdutoBean;
+import relacionamentos.model.Cliente;
+import relacionamentos.model.Produto;
 
 @Named
 @RequestScoped

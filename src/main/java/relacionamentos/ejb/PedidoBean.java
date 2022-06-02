@@ -1,4 +1,4 @@
-package ejb;
+package relacionamentos.ejb;
 
 import java.util.Date;
 import java.util.List;
@@ -8,11 +8,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import model.Cliente;
-import model.Pagamento;
-import model.Pagamento.TipoPagamento;
-import model.Pedido;
-import model.Produto;
+import relacionamentos.model.Cliente;
+import relacionamentos.model.Pagamento;
+import relacionamentos.model.Pedido;
+import relacionamentos.model.Produto;
+import relacionamentos.model.Pagamento.TipoPagamento;
 
 /**
  * Session Bean implementation class PedidoBean

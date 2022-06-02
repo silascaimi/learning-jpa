@@ -1,4 +1,4 @@
-package model;
+package relacionamentos.model;
 
 import java.io.Serializable;
 

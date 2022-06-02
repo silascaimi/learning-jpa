@@ -1,4 +1,4 @@
-package ejb;
+package relacionamentos.ejb;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import model.Produto;
+import relacionamentos.model.Produto;
 
 /**
  * Session Bean implementation class ProdutoBean
