@@ -9,7 +9,7 @@ import javax.persistence.Id;
  * Entity implementation class for Entity: Livro
  *
  */
-@Entity
+@Entity(name = "TAREFA_TABLE")
 public class Tarefa {
 
 	@Id
