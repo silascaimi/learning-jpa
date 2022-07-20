@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Extended Persistence Context</title>
+</h:head>
+<body>
+	<h1>Lista de Itens</h1>
+	
+	<h:form>
+	Item: <h:inputText id="item" value="#{extended.item.nome}" />
+	<h:commandButton value="Adicionar" action="#{extended.adicionar}" />
+	<h:commandButton value="Finalizar" action="#{extended.finalizar" />
+	<h:message for="item" style="color: red;" />
+	
+	<hr/><hr/>
+	
+	<h:panelGroup>
+		<ul>
+			<ui:repeat var="i" value="#{extended.itens}">
+				<li>#{i.nome} [ <h:commandLink value="Remover" action ="#{extended.remover(i)}" /> ]</li>
+			</ui:repeat>
+		</ul>
+	</h:panelGroup>
+	
+	</h:form>
+</body>
+</html>
