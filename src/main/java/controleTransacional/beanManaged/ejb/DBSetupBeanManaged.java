@@ -15,7 +15,7 @@ import controleTransacional.containerManaged.model.Livro;
 @Singleton
 @LocalBean
 @Startup
-public class DBSetupBean {
+public class DBSetupBeanManaged {
 
     @PersistenceContext
     private EntityManager em;
@@ -23,7 +23,7 @@ public class DBSetupBean {
     @PostConstruct
     public void setup() {
     	Livro l1 = new Livro();
-    	l1.setId(4);
+    	l1.setId(3);
     	l1.setTitulo("Java2");
     	l1.setNumPaginas(260);
     	em.persist(l1);

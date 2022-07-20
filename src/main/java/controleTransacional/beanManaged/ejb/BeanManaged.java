@@ -19,7 +19,7 @@ import controleTransacional.containerManaged.model.Livro;
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
 @LocalBean
-public class MyBean {
+public class BeanManaged {
 	
 	@PersistenceContext
 	private EntityManager em;
