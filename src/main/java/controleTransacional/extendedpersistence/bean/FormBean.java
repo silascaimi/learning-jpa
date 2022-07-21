@@ -1,5 +1,6 @@
 package controleTransacional.extendedpersistence.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import controleTransacional.extendedpersistence.model.Item;
 
 @Named("extended")
 @SessionScoped
-public class FormBean {
+public class FormBean implements Serializable {
 
 	@EJB
 	private ItensBean itensBean;
