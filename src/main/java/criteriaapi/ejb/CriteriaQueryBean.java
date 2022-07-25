@@ -38,7 +38,7 @@ public class CriteriaQueryBean {
 		Curso c1 = new Curso("JavaEE");
 		em.persist(c1);
 		
-		Modulo m1c1 = new Modulo("Introdução ao JavaEE", 1, c1);
+		Modulo m1c1 = new Modulo("Introduï¿½ï¿½o ao JavaEE", 1, c1);
 		Modulo m2c1 = new Modulo("JSF", 2, c1);
 		Modulo m3c1 = new Modulo("EJB", 3, c1);
 		em.persist(m1c1);
@@ -61,17 +61,17 @@ public class CriteriaQueryBean {
 		Curso c2 = new Curso("Fundamentos de Java");
 		em.persist(c2);
 		
-		Modulo m1c2 = new Modulo("Introdução ao Java", 1, c2);
-		Modulo m2c2 = new Modulo("Variáveis", 2, c2);
-		Modulo m3c2 = new Modulo("Orientação a Objetos", 3, c2);
+		Modulo m1c2 = new Modulo("Introduï¿½ï¿½o ao Java", 1, c2);
+		Modulo m2c2 = new Modulo("Variï¿½veis", 2, c2);
+		Modulo m3c2 = new Modulo("Orientaï¿½ï¿½o a Objetos", 3, c2);
 		em.persist(m1c2);
 		em.persist(m2c2);
 		em.persist(m3c2);
 		
-		Aula a1m1c2 = new Aula("História do Java", 6, 1, m1c2);
-		Aula a2m1c2 = new Aula("Características do Java", 10, 2, m1c2);
-		Aula a1m2c2 = new Aula("Criação de Variáveis", 15, 1, m2c2);
-		Aula a2m2c2 = new Aula("Atribuição de Valor", 12, 2, m2c2);
+		Aula a1m1c2 = new Aula("Histï¿½ria do Java", 6, 1, m1c2);
+		Aula a2m1c2 = new Aula("Caracterï¿½sticas do Java", 10, 2, m1c2);
+		Aula a1m2c2 = new Aula("Criaï¿½ï¿½o de Variï¿½veis", 15, 1, m2c2);
+		Aula a2m2c2 = new Aula("Atribuiï¿½ï¿½o de Valor", 12, 2, m2c2);
 		Aula a1m3c2 = new Aula("Classes", 25, 1, m3c2);
 		Aula a2m3c2 = new Aula("Objetos", 22, 2, m3c2);
 		em.persist(a1m1c2);
@@ -88,6 +88,7 @@ public class CriteriaQueryBean {
 		CriteriaQuery<Aula> q = cb.createQuery(Aula.class);
 		
 		Root<Aula> aula = q.from(Aula.class);
+		veiculo.fetch("modulo"); // Usa o fetch para evitar multiplas consultas ao banco de dados
 		
 		q.select(aula);
 		

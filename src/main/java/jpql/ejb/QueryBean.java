@@ -128,4 +128,6 @@ public class QueryBean {
 		return q.getResultList();
 	}
 
+	// Usar o join fetch para evitar multiplas consultas ao banco
+
 }
